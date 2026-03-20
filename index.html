@@ -12,61 +12,44 @@
     --card:#16161f; --card2:#1c1c28; --border:#2a2a3a;
     --accent:#e8ff5a; --accent-dim:rgba(232,255,90,0.12);
     --text:#f0f0f8; --text2:#9090b0; --text3:#5a5a7a;
-    --green:#5af5a0; --red:#ff6b6b; --blue:#6bb8ff;
+    --green:#5af5a0; --red:#ff6b6b; --blue:#6bb8ff; --purple:#c06bff;
     --radius:14px; --radius-sm:8px;
     --fd:'Clash Display',sans-serif; --fb:'Instrument Sans',sans-serif;
   }
   *{margin:0;padding:0;box-sizing:border-box;}
   html{scroll-behavior:smooth;}
   body{background:var(--bg);color:var(--text);font-family:var(--fb);min-height:100vh;overflow-x:hidden;}
-  ::-webkit-scrollbar{width:5px;}
-  ::-webkit-scrollbar-track{background:var(--bg);}
-  ::-webkit-scrollbar-thumb{background:var(--border);border-radius:10px;}
-
+  ::-webkit-scrollbar{width:5px;}::-webkit-scrollbar-track{background:var(--bg);}::-webkit-scrollbar-thumb{background:var(--border);border-radius:10px;}
   .bg-grid{position:fixed;inset:0;background-image:linear-gradient(rgba(232,255,90,0.03) 1px,transparent 1px),linear-gradient(90deg,rgba(232,255,90,0.03) 1px,transparent 1px);background-size:48px 48px;pointer-events:none;z-index:0;}
-  .bg-glow{position:fixed;top:-20%;left:50%;transform:translateX(-50%);width:700px;height:500px;background:radial-gradient(ellipse at center,rgba(232,255,90,0.07) 0%,transparent 70%);pointer-events:none;z-index:0;}
-
-  /* ══ PAGE SYSTEM ══ */
+  .bg-glow{position:fixed;top:-20%;left:50%;transform:translateX(-50%);width:700px;height:500px;background:radial-gradient(ellipse at center,rgba(232,255,90,0.06) 0%,transparent 70%);pointer-events:none;z-index:0;}
   .page{display:none;min-height:100vh;position:relative;z-index:1;}
   .page.active{display:flex;}
 
-  /* ══════════════════════════════
-     PAGE 1 — WELCOME
-  ══════════════════════════════ */
+  /* ══ WELCOME ══ */
   #pg-welcome{flex-direction:column;}
-
-  .w-nav{display:flex;align-items:center;justify-content:space-between;padding:1.25rem clamp(1.5rem,5vw,4rem);border-bottom:1px solid var(--border);}
+  .w-nav{display:flex;align-items:center;justify-content:space-between;padding:1.25rem clamp(1.5rem,5vw,4rem);border-bottom:1px solid var(--border);flex-wrap:wrap;gap:10px;}
   .w-logo{font-family:var(--fd);font-size:1.2rem;font-weight:700;color:var(--accent);}
-  .w-badge{background:var(--accent-dim);border:1px solid rgba(232,255,90,0.2);border-radius:100px;padding:5px 14px;font-size:0.72rem;font-weight:600;color:var(--accent);letter-spacing:0.05em;}
-  /* FREE BADGE */
-  .free-badge{background:rgba(90,245,160,0.12);border:1px solid rgba(90,245,160,0.25);border-radius:100px;padding:5px 14px;font-size:0.72rem;font-weight:700;color:var(--green);letter-spacing:0.05em;}
-
+  .nav-badges{display:flex;gap:8px;flex-wrap:wrap;}
+  .badge{border-radius:100px;padding:5px 14px;font-size:0.71rem;font-weight:700;letter-spacing:0.04em;}
+  .badge-free{background:rgba(90,245,160,0.12);border:1px solid rgba(90,245,160,0.3);color:var(--green);}
+  .badge-groq{background:var(--accent-dim);border:1px solid rgba(232,255,90,0.2);color:var(--accent);}
   .w-hero{display:flex;flex-direction:column;align-items:center;text-align:center;padding:clamp(3rem,7vw,5rem) clamp(1.5rem,5vw,4rem) 3rem;}
-
   .eyebrow{display:inline-flex;align-items:center;gap:8px;background:var(--accent-dim);border:1px solid rgba(232,255,90,0.2);border-radius:100px;padding:6px 18px;font-size:0.72rem;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:var(--accent);margin-bottom:2rem;animation:fadeUp 0.5s ease both;}
   .live-dot{width:6px;height:6px;background:var(--accent);border-radius:50%;animation:pulse 2s infinite;}
-
   .w-title{font-family:var(--fd);font-size:clamp(2.5rem,6vw,4.5rem);font-weight:700;line-height:1.05;letter-spacing:-0.02em;margin-bottom:1.5rem;max-width:780px;animation:fadeUp 0.5s 0.1s ease both;}
   .w-title .hl{color:var(--accent);}
-
   .w-desc{font-size:clamp(0.93rem,2vw,1.05rem);color:var(--text2);line-height:1.7;max-width:580px;margin-bottom:1.5rem;animation:fadeUp 0.5s 0.15s ease both;}
-
-  /* FREE FOREVER BANNER */
-  .free-banner{display:inline-flex;align-items:center;gap:10px;background:rgba(90,245,160,0.08);border:1.5px solid rgba(90,245,160,0.25);border-radius:12px;padding:10px 20px;margin-bottom:2.5rem;animation:fadeUp 0.5s 0.2s ease both;}
-  .free-banner .fb-icon{font-size:1.2rem;}
-  .free-banner .fb-text{font-size:0.88rem;color:var(--green);font-weight:600;}
-  .free-banner .fb-text span{color:var(--text2);font-weight:400;}
-
+  .free-banner{display:inline-flex;align-items:center;gap:12px;background:rgba(90,245,160,0.07);border:1.5px solid rgba(90,245,160,0.25);border-radius:12px;padding:12px 20px;margin-bottom:2.5rem;animation:fadeUp 0.5s 0.2s ease both;}
+  .free-banner .fbi{font-size:1.3rem;}
+  .free-banner .fbt-title{font-size:0.9rem;font-weight:700;color:var(--green);}
+  .free-banner .fbt-sub{font-size:0.78rem;color:var(--text2);margin-top:2px;}
   .features{display:grid;grid-template-columns:repeat(auto-fit,minmax(185px,1fr));gap:12px;width:100%;max-width:900px;margin-bottom:4rem;animation:fadeUp 0.5s 0.25s ease both;}
   .feat{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:1.25rem;text-align:left;transition:border-color 0.2s,transform 0.2s;}
   .feat:hover{border-color:rgba(232,255,90,0.3);transform:translateY(-2px);}
   .feat-icon{font-size:1.4rem;margin-bottom:0.75rem;display:block;}
   .feat-name{font-family:var(--fd);font-size:0.9rem;font-weight:600;margin-bottom:4px;}
   .feat-desc{font-size:0.77rem;color:var(--text3);line-height:1.5;}
-
   .sec-divider{width:100%;max-width:900px;border:none;border-top:1px solid var(--border);margin:0 auto 4rem;}
-
-  /* HOW IT WORKS */
   .how-sec{width:100%;max-width:860px;padding:0 clamp(1.5rem,5vw,4rem);margin:0 auto 5rem;}
   .sec-title{font-family:var(--fd);font-size:clamp(1.5rem,3vw,2rem);font-weight:700;text-align:center;margin-bottom:0.5rem;}
   .sec-sub{text-align:center;color:var(--text2);font-size:0.87rem;margin-bottom:2.5rem;}
@@ -76,25 +59,23 @@
   .step-circle{width:40px;height:40px;border-radius:50%;background:var(--card2);border:2px solid var(--border);display:flex;align-items:center;justify-content:center;font-family:var(--fd);font-size:0.88rem;font-weight:700;color:var(--accent);flex-shrink:0;position:relative;z-index:1;}
   .step-body{padding:8px 0 2rem;}
   .step-title{font-family:var(--fd);font-size:0.98rem;font-weight:600;margin-bottom:5px;}
-  .step-detail{font-size:0.85rem;color:var(--text2);line-height:1.65;}
+  .step-detail{font-size:0.85rem;color:var(--text2);line-height:1.7;}
   .step-detail a{color:var(--accent);text-decoration:none;font-weight:600;}
-  .step-detail a:hover{text-decoration:underline;}
-  .step-tag{display:inline-block;background:var(--accent-dim);border:1px solid rgba(232,255,90,0.2);border-radius:6px;padding:2px 10px;font-size:0.71rem;font-weight:600;color:var(--accent);margin-top:6px;}
-  .step-tag.green{background:rgba(90,245,160,0.1);border-color:rgba(90,245,160,0.25);color:var(--green);}
-
-  /* API KEY CARD */
+  .step-tag{display:inline-block;border-radius:6px;padding:2px 10px;font-size:0.71rem;font-weight:600;margin-top:6px;}
+  .tag-green{background:rgba(90,245,160,0.1);border:1px solid rgba(90,245,160,0.25);color:var(--green);}
+  .tag-yellow{background:var(--accent-dim);border:1px solid rgba(232,255,90,0.2);color:var(--accent);}
   .apikey-sec{width:100%;max-width:540px;margin:0 auto 5rem;padding:0 clamp(1rem,4vw,2rem);animation:fadeUp 0.5s 0.3s ease both;}
   .apikey-card{background:var(--card);border:1.5px solid var(--border);border-radius:20px;padding:2rem;position:relative;overflow:hidden;}
   .apikey-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--green),var(--accent),transparent);}
   .ak-title{font-family:var(--fd);font-size:1.3rem;font-weight:700;margin-bottom:0.4rem;}
-  .ak-sub{font-size:0.82rem;color:var(--text2);margin-bottom:1.5rem;line-height:1.55;}
+  .ak-sub{font-size:0.82rem;color:var(--text2);margin-bottom:1.5rem;line-height:1.6;}
+  .ak-sub a{color:var(--accent);font-weight:600;text-decoration:none;}
   .inp-label{font-size:0.74rem;font-weight:600;letter-spacing:0.06em;text-transform:uppercase;color:var(--text3);margin-bottom:8px;display:block;}
   .key-wrap{position:relative;margin-bottom:1rem;}
   .key-wrap input{width:100%;background:var(--bg3);border:1.5px solid var(--border);border-radius:var(--radius-sm);padding:12px 44px 12px 14px;font-family:var(--fb);font-size:0.9rem;color:var(--text);outline:none;transition:border-color 0.2s,box-shadow 0.2s;letter-spacing:0.04em;}
   .key-wrap input:focus{border-color:var(--green);box-shadow:0 0 0 3px rgba(90,245,160,0.1);}
   .key-wrap input::placeholder{color:var(--text3);letter-spacing:0;}
   .eye-btn{position:absolute;right:12px;top:50%;transform:translateY(-50%);background:none;border:none;color:var(--text3);cursor:pointer;font-size:1rem;padding:4px;}
-  .eye-btn:hover{color:var(--text2);}
   .key-err{font-size:0.8rem;color:var(--red);margin-bottom:1rem;display:none;align-items:center;gap:6px;}
   .key-err.show{display:flex;}
   .btn-cont{width:100%;background:var(--green);color:#06060a;border:none;border-radius:var(--radius-sm);padding:13px;font-family:var(--fd);font-size:1rem;font-weight:700;cursor:pointer;transition:all 0.2s;letter-spacing:0.02em;margin-bottom:1.25rem;}
@@ -103,15 +84,18 @@
   .privacy-box .pi{font-size:1rem;flex-shrink:0;margin-top:1px;}
   .privacy-box .pt{font-size:0.76rem;color:var(--text2);line-height:1.5;}
   .privacy-box .pt strong{color:var(--green);}
-
+  .limits-box{background:var(--card2);border:1px solid var(--border);border-radius:var(--radius-sm);padding:1rem;margin-bottom:1.25rem;}
+  .limits-title{font-size:0.74rem;font-weight:700;text-transform:uppercase;letter-spacing:0.06em;color:var(--text3);margin-bottom:8px;}
+  .limits-row{display:flex;justify-content:space-between;font-size:0.8rem;padding:4px 0;border-bottom:1px solid var(--border);}
+  .limits-row:last-child{border-bottom:none;}
+  .limits-row span:first-child{color:var(--text2);}
+  .limits-row span:last-child{color:var(--green);font-weight:600;}
   .w-footer{border-top:1px solid var(--border);padding:1.5rem clamp(1.5rem,5vw,4rem);display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1rem;}
   .w-footer-logo{font-family:var(--fd);font-size:0.9rem;font-weight:700;color:var(--text3);}
   .w-footer-note{font-size:0.76rem;color:var(--text3);}
 
-  /* ══════════════════════════════
-     PAGE 2 — EXAM SELECT
-  ══════════════════════════════ */
-  #pg-landing{align-items:center;justify-content:center;flex-direction:column;padding:2rem;}
+  /* ══ EXAM SELECT ══ */
+  #pg-landing{flex-direction:column;align-items:center;justify-content:center;padding:2rem;}
   .landing-inner{text-align:center;max-width:660px;width:100%;}
   .logo-badge{display:inline-flex;align-items:center;gap:8px;background:var(--accent-dim);border:1px solid rgba(232,255,90,0.2);border-radius:100px;padding:6px 16px;font-size:0.72rem;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:var(--accent);margin-bottom:2rem;animation:fadeUp 0.5s ease both;}
   h1.hero{font-family:var(--fd);font-size:clamp(2.4rem,6vw,4.2rem);font-weight:700;line-height:1.05;letter-spacing:-0.02em;margin-bottom:1.25rem;animation:fadeUp 0.5s 0.1s ease both;}
@@ -125,16 +109,14 @@
   .exam-wrap input{width:100%;background:var(--card);border:1.5px solid var(--border);border-radius:var(--radius);padding:1rem 1.2rem;font-family:var(--fb);font-size:1rem;color:var(--text);outline:none;transition:border-color 0.2s,box-shadow 0.2s;}
   .exam-wrap input:focus{border-color:var(--accent);box-shadow:0 0 0 4px var(--accent-dim);}
   .exam-wrap input::placeholder{color:var(--text3);}
-  .btn-primary{width:100%;max-width:480px;background:var(--accent);color:#06060a;font-family:var(--fd);font-size:1rem;font-weight:700;border:none;border-radius:var(--radius);padding:1rem;cursor:pointer;transition:all 0.2s;animation:fadeUp 0.5s 0.3s ease both;letter-spacing:0.02em;margin-bottom:1.5rem;display:block;}
+  .btn-primary{width:100%;max-width:250px;background:var(--accent);color:#06060a;font-family:var(--fd);font-size:1rem;font-weight:700;border:none;border-radius:var(--radius);padding:1rem;cursor:pointer;transition:all 0.2s;animation:fadeUp 0.5s 0.3s ease both;letter-spacing:0.02em;margin-bottom:1.5rem;display:block;}
   .btn-primary:hover{background:#f5ff80;transform:translateY(-2px);box-shadow:0 8px 32px rgba(232,255,90,0.3);}
   .chip-row{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;animation:fadeUp 0.5s 0.35s ease both;}
   .chip{background:var(--card);border:1px solid var(--border);border-radius:100px;padding:5px 13px;font-size:0.77rem;color:var(--text2);cursor:pointer;transition:all 0.2s;}
   .chip:hover{border-color:var(--accent);color:var(--accent);background:var(--accent-dim);}
 
-  /* ══════════════════════════════
-     LOADING
-  ══════════════════════════════ */
-  #pg-loading{align-items:center;justify-content:center;flex-direction:column;gap:2rem;padding:2rem;}
+  /* ══ LOADING ══ */
+  #pg-loading{flex-direction:column;align-items:center;justify-content:center;gap:2rem;padding:2rem;}
   .ld-logo{font-family:var(--fd);font-size:1.4rem;font-weight:700;color:var(--accent);}
   .ld-title{font-family:var(--fd);font-size:clamp(1.3rem,4vw,2rem);font-weight:600;text-align:center;}
   .ld-steps{display:flex;flex-direction:column;gap:10px;width:100%;max-width:400px;}
@@ -150,24 +132,22 @@
   .ld-step.done::after{content:'✓';margin-left:auto;color:var(--green);font-weight:700;}
   @keyframes spin{to{transform:rotate(360deg);}}
 
-  /* ══════════════════════════════
-     DASHBOARD
-  ══════════════════════════════ */
+  /* ══ DASHBOARD ══ */
   #pg-dash{flex-direction:column;}
-  .topbar{position:sticky;top:0;z-index:100;background:rgba(6,6,10,0.88);backdrop-filter:blur(16px);border-bottom:1px solid var(--border);padding:0 clamp(1rem,3vw,2rem);display:flex;align-items:center;gap:1rem;height:56px;}
+  .topbar{position:sticky;top:0;z-index:100;background:rgba(6,6,10,0.92);backdrop-filter:blur(16px);border-bottom:1px solid var(--border);padding:0 clamp(1rem,3vw,2rem);display:flex;align-items:center;gap:10px;height:56px;}
   .tb-logo{font-family:var(--fd);font-size:1.05rem;font-weight:700;color:var(--accent);flex-shrink:0;}
-  .tb-exam{background:var(--accent-dim);border:1px solid rgba(232,255,90,0.2);border-radius:100px;padding:3px 12px;font-size:0.74rem;font-weight:600;color:var(--accent);letter-spacing:0.05em;text-transform:uppercase;}
-  .tb-free{background:rgba(90,245,160,0.12);border:1px solid rgba(90,245,160,0.2);border-radius:100px;padding:3px 10px;font-size:0.7rem;font-weight:700;color:var(--green);}
-  .tb-back{margin-left:auto;background:var(--card);border:1px solid var(--border);border-radius:var(--radius-sm);padding:5px 12px;font-size:0.77rem;color:var(--text2);cursor:pointer;transition:all 0.2s;font-family:var(--fb);}
+  .tb-exam{background:var(--accent-dim);border:1px solid rgba(232,255,90,0.2);border-radius:100px;padding:3px 12px;font-size:0.74rem;font-weight:600;color:var(--accent);letter-spacing:0.04em;text-transform:uppercase;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:140px;}
+  .tb-free{background:rgba(90,245,160,0.12);border:1px solid rgba(90,245,160,0.2);border-radius:100px;padding:3px 10px;font-size:0.7rem;font-weight:700;color:var(--green);white-space:nowrap;}
+  .tb-back{margin-left:auto;background:var(--card);border:1px solid var(--border);border-radius:var(--radius-sm);padding:6px 14px;font-size:0.77rem;color:var(--text2);cursor:pointer;transition:all 0.2s;font-family:var(--fb);white-space:nowrap;flex-shrink:0;}
   .tb-back:hover{color:var(--text);border-color:var(--text2);}
 
   .tab-nav{background:var(--bg2);border-bottom:1px solid var(--border);padding:0 clamp(1rem,3vw,2rem);display:flex;overflow-x:auto;scrollbar-width:none;}
   .tab-nav::-webkit-scrollbar{display:none;}
-  .tab-btn{background:none;border:none;border-bottom:2.5px solid transparent;padding:13px 18px;font-family:var(--fb);font-size:0.83rem;font-weight:600;color:var(--text3);cursor:pointer;white-space:nowrap;transition:all 0.2s;display:flex;align-items:center;gap:6px;}
+  .tab-btn{background:none;border:none;border-bottom:2.5px solid transparent;padding:13px 16px;font-family:var(--fb);font-size:0.82rem;font-weight:600;color:var(--text3);cursor:pointer;white-space:nowrap;transition:all 0.2s;display:flex;align-items:center;gap:6px;flex-shrink:0;}
   .tab-btn:hover{color:var(--text2);}
   .tab-btn.active{color:var(--accent);border-bottom-color:var(--accent);}
 
-  .tab-content{flex:1;padding:clamp(1rem,3vw,2rem);max-width:900px;width:100%;margin:0 auto;}
+  .tab-content{flex:1;padding:clamp(1rem,3vw,1.5rem);max-width:900px;width:100%;margin:0 auto;}
   .tab-panel{display:none;}
   .tab-panel.active{display:block;animation:fadeIn 0.3s ease;}
 
@@ -175,11 +155,9 @@
   .card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:1.5rem;margin-bottom:1rem;}
   .card-title{font-family:var(--fd);font-size:1.05rem;font-weight:600;margin-bottom:1rem;display:flex;align-items:center;gap:8px;}
   .sec-lbl{font-size:0.71rem;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:var(--text3);margin-bottom:0.75rem;}
-
-  /* OVERVIEW */
-  .ov-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:12px;margin-bottom:1.5rem;}
+  .ov-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:10px;margin-bottom:1.5rem;}
   .ov-stat{background:var(--card2);border:1px solid var(--border);border-radius:var(--radius-sm);padding:1rem;text-align:center;}
-  .ov-val{font-family:var(--fd);font-size:1.6rem;font-weight:700;color:var(--accent);line-height:1;margin-bottom:4px;}
+  .ov-val{font-family:var(--fd);font-size:1.5rem;font-weight:700;color:var(--accent);line-height:1;margin-bottom:4px;}
   .ov-lbl{font-size:0.71rem;color:var(--text2);font-weight:500;}
   .chips-wrap{display:flex;flex-wrap:wrap;gap:8px;}
   .topic-chip{background:var(--card2);border:1px solid var(--border);border-radius:100px;padding:6px 13px;font-size:0.79rem;font-weight:500;cursor:pointer;transition:all 0.2s;color:var(--text2);}
@@ -191,50 +169,100 @@
   .mdc ul{padding-left:1.2rem;}
   .mdc li{margin-bottom:4px;}
 
-  /* PRACTICE */
-  .prac-filters{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:1.5rem;align-items:center;}
-  .f-sel{background:var(--card);border:1px solid var(--border);border-radius:var(--radius-sm);padding:8px 11px;font-family:var(--fb);font-size:0.82rem;color:var(--text);outline:none;cursor:pointer;}
+  /* ══ PRACTICE ══ */
+  .prac-filters{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:1.5rem;align-items:center;}
+  .f-sel{background:var(--card);border:1px solid var(--border);border-radius:var(--radius-sm);padding:8px 11px;font-family:var(--fb);font-size:0.82rem;color:var(--text);outline:none;cursor:pointer;flex:1;min-width:120px;}
   .f-sel:focus{border-color:var(--accent);}
-  .d-btn{background:var(--card);border:1px solid var(--border);border-radius:var(--radius-sm);padding:7px 14px;font-family:var(--fb);font-size:0.79rem;font-weight:600;cursor:pointer;transition:all 0.2s;color:var(--text2);}
+  .diff-group{display:flex;gap:6px;}
+  .d-btn{background:var(--card);border:1px solid var(--border);border-radius:var(--radius-sm);padding:8px 14px;font-family:var(--fb);font-size:0.79rem;font-weight:600;cursor:pointer;transition:all 0.2s;color:var(--text2);white-space:nowrap;}
   .d-btn.ae{background:rgba(90,245,160,0.15);border-color:var(--green);color:var(--green);}
   .d-btn.am{background:rgba(255,200,70,0.15);border-color:#ffc846;color:#ffc846;}
   .d-btn.ah{background:rgba(255,107,107,0.15);border-color:var(--red);color:var(--red);}
-  .btn-gen{background:var(--accent);color:#06060a;border:none;border-radius:var(--radius-sm);padding:8px 18px;font-family:var(--fd);font-size:0.83rem;font-weight:700;cursor:pointer;transition:all 0.2s;margin-left:auto;}
+  .btn-gen{background:var(--accent);color:#06060a;border:none;border-radius:var(--radius-sm);padding:8px 18px;font-family:var(--fd);font-size:0.83rem;font-weight:700;cursor:pointer;transition:all 0.2s;white-space:nowrap;}
   .btn-gen:hover{background:#f5ff80;transform:translateY(-1px);}
   .btn-gen:disabled{opacity:0.5;cursor:not-allowed;transform:none;}
 
-  .q-card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:1.5rem;margin-bottom:1rem;animation:fadeIn 0.3s ease;}
-  .q-head{display:flex;align-items:center;gap:10px;margin-bottom:1rem;}
-  .q-num{font-family:var(--fd);font-size:0.76rem;font-weight:700;color:var(--accent);background:var(--accent-dim);padding:2px 10px;border-radius:100px;}
-  .q-diff{font-size:0.71rem;font-weight:600;padding:2px 10px;border-radius:100px;}
+  .q-card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:1.25rem;margin-bottom:1rem;animation:fadeIn 0.3s ease;}
+  .q-head{display:flex;align-items:center;gap:8px;margin-bottom:1rem;flex-wrap:wrap;}
+  .q-num{font-family:var(--fd);font-size:0.76rem;font-weight:700;color:var(--accent);background:var(--accent-dim);padding:3px 10px;border-radius:100px;flex-shrink:0;}
+  .q-diff{font-size:0.71rem;font-weight:600;padding:3px 10px;border-radius:100px;flex-shrink:0;}
   .q-diff.easy{background:rgba(90,245,160,0.15);color:var(--green);}
   .q-diff.medium{background:rgba(255,200,70,0.15);color:#ffc846;}
   .q-diff.hard{background:rgba(255,107,107,0.15);color:var(--red);}
-  .q-text{font-size:0.97rem;font-weight:500;line-height:1.6;margin-bottom:1.25rem;color:var(--text);}
+  .q-topic-tag{font-size:0.7rem;color:var(--text3);margin-left:auto;}
+  .q-text{font-size:0.95rem;font-weight:500;line-height:1.6;margin-bottom:1.25rem;color:var(--text);}
   .opts{display:flex;flex-direction:column;gap:8px;}
-  .opt{background:var(--card2);border:1.5px solid var(--border);border-radius:var(--radius-sm);padding:11px 14px;text-align:left;font-family:var(--fb);font-size:0.86rem;color:var(--text2);cursor:pointer;transition:all 0.2s;display:flex;align-items:center;gap:12px;}
+  .opt{background:var(--card2);border:1.5px solid var(--border);border-radius:var(--radius-sm);padding:11px 14px;text-align:left;font-family:var(--fb);font-size:0.86rem;color:var(--text2);cursor:pointer;transition:all 0.2s;display:flex;align-items:flex-start;gap:12px;width:100%;}
   .opt:hover:not(:disabled){border-color:var(--accent);color:var(--text);background:var(--accent-dim);}
   .opt.correct{border-color:var(--green);background:rgba(90,245,160,0.12);color:var(--green);}
   .opt.wrong{border-color:var(--red);background:rgba(255,107,107,0.1);color:var(--red);}
-  .opt-l{width:25px;height:25px;border-radius:6px;background:var(--bg3);display:flex;align-items:center;justify-content:center;font-size:0.74rem;font-weight:700;flex-shrink:0;}
+  .opt-l{width:26px;height:26px;border-radius:6px;background:var(--bg3);display:flex;align-items:center;justify-content:center;font-size:0.74rem;font-weight:700;flex-shrink:0;margin-top:1px;}
+  .opt-text{flex:1;line-height:1.4;}
   .exp-box{display:none;margin-top:1rem;padding:1rem;background:var(--bg3);border-radius:var(--radius-sm);border-left:3px solid var(--accent);}
   .exp-box.vis{display:block;animation:fadeIn 0.3s ease;}
   .exp-ttl{font-size:0.71rem;font-weight:700;text-transform:uppercase;letter-spacing:0.06em;color:var(--accent);margin-bottom:6px;}
   .exp-txt{font-size:0.84rem;line-height:1.65;color:var(--text2);}
 
-  /* TEACH */
+  /* SUBMIT SECTION */
+  .submit-section{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:1.5rem;margin-top:1rem;text-align:center;display:none;}
+  .submit-section.visible{display:block;animation:fadeIn 0.4s ease;}
+  .submit-title{font-family:var(--fd);font-size:1.1rem;font-weight:600;margin-bottom:0.5rem;}
+  .submit-sub{font-size:0.85rem;color:var(--text2);margin-bottom:1.25rem;}
+  .btn-submit{background:var(--green);color:#06060a;border:none;border-radius:var(--radius-sm);padding:12px 32px;font-family:var(--fd);font-size:1rem;font-weight:700;cursor:pointer;transition:all 0.2s;letter-spacing:0.02em;}
+  .btn-submit:hover{background:#7fffc4;transform:translateY(-2px);box-shadow:0 6px 24px rgba(90,245,160,0.3);}
+
+  /* RESULT PANEL */
+  .result-panel{display:none;margin-top:1rem;animation:fadeIn 0.4s ease;}
+  .result-panel.visible{display:block;}
+  .result-hero{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:2rem;text-align:center;margin-bottom:1rem;position:relative;overflow:hidden;}
+  .result-hero::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--green),var(--accent),transparent);}
+  .result-score{font-family:var(--fd);font-size:3.5rem;font-weight:700;line-height:1;margin-bottom:4px;}
+  .result-label{font-size:0.85rem;color:var(--text2);margin-bottom:1.5rem;}
+  .result-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:1.5rem;}
+  .rs{background:var(--card2);border:1px solid var(--border);border-radius:var(--radius-sm);padding:1rem;text-align:center;}
+  .rs-val{font-family:var(--fd);font-size:1.5rem;font-weight:700;line-height:1;margin-bottom:4px;}
+  .rs-lbl{font-size:0.72rem;color:var(--text2);}
+  .result-msg{font-size:0.9rem;color:var(--text2);line-height:1.6;padding:1rem;background:var(--bg3);border-radius:var(--radius-sm);}
+
+  /* CHART */
+  .chart-wrap{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:1.5rem;margin-bottom:1rem;}
+  .chart-title{font-family:var(--fd);font-size:1rem;font-weight:600;margin-bottom:1.25rem;display:flex;align-items:center;gap:8px;}
+  .bar-chart{display:flex;flex-direction:column;gap:10px;}
+  .bar-row{display:flex;align-items:center;gap:12px;}
+  .bar-label{font-size:0.78rem;color:var(--text2);width:100px;flex-shrink:0;text-align:right;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+  .bar-track{flex:1;height:28px;background:var(--card2);border-radius:6px;overflow:hidden;position:relative;}
+  .bar-fill{height:100%;border-radius:6px;transition:width 0.8s ease;display:flex;align-items:center;padding-left:10px;font-size:0.75rem;font-weight:600;color:#06060a;min-width:0;}
+  .bar-fill.correct-bar{background:var(--green);}
+  .bar-fill.wrong-bar{background:var(--red);}
+  .bar-count{font-size:0.76rem;color:var(--text3);width:30px;text-align:right;flex-shrink:0;}
+
+  /* AI RECOMMENDATION */
+  .ai-rec{background:var(--card);border:1px solid rgba(232,255,90,0.2);border-radius:var(--radius);padding:1.5rem;margin-bottom:1rem;}
+  .ai-rec-title{font-family:var(--fd);font-size:1rem;font-weight:600;margin-bottom:1rem;display:flex;align-items:center;gap:8px;color:var(--accent);}
+  .ai-rec-content{font-size:0.86rem;line-height:1.7;color:var(--text2);}
+  .ai-rec-content h3{font-family:var(--fd);font-size:0.9rem;font-weight:600;color:var(--text);margin:1rem 0 0.4rem;}
+  .ai-rec-content h3:first-child{margin-top:0;}
+  .ai-rec-content strong{color:var(--accent);}
+  .ai-rec-content ul{padding-left:1.2rem;}
+  .ai-rec-content li{margin-bottom:4px;}
+
+  /* TRY AGAIN */
+  .btn-try-again{background:var(--accent);color:#06060a;border:none;border-radius:var(--radius-sm);padding:10px 24px;font-family:var(--fd);font-size:0.9rem;font-weight:700;cursor:pointer;transition:all 0.2s;margin-top:0.5rem;}
+  .btn-try-again:hover{background:#f5ff80;}
+
+  /* ══ TEACH ══ */
   .t-card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);margin-bottom:8px;overflow:hidden;transition:border-color 0.2s;}
   .t-card.open{border-color:rgba(232,255,90,0.3);}
   .t-head{padding:1rem 1.2rem;display:flex;align-items:center;gap:12px;cursor:pointer;user-select:none;transition:background 0.2s;}
   .t-head:hover{background:var(--card2);}
   .t-ico{width:30px;height:30px;border-radius:8px;background:var(--accent-dim);display:flex;align-items:center;justify-content:center;font-size:0.85rem;flex-shrink:0;color:var(--accent);}
   .t-name{font-weight:600;font-size:0.91rem;flex:1;}
-  .t-arr{color:var(--text3);font-size:0.84rem;transition:transform 0.3s;}
+  .t-arr{color:var(--text3);font-size:0.84rem;transition:transform 0.3s;flex-shrink:0;}
   .t-card.open .t-arr{transform:rotate(180deg);}
   .t-body{display:none;padding:0 1.2rem 1.2rem;border-top:1px solid var(--border);}
   .t-card.open .t-body{display:block;animation:fadeIn 0.3s ease;}
 
-  /* CHAT */
+  /* ══ CHAT ══ */
   .chat-wrap{display:flex;flex-direction:column;height:calc(100vh - 185px);min-height:480px;}
   .chat-msgs{flex:1;overflow-y:auto;padding:1rem 0;display:flex;flex-direction:column;gap:12px;}
   .msg{max-width:85%;padding:11px 15px;border-radius:14px;font-size:0.86rem;line-height:1.6;animation:fadeIn 0.3s ease;}
@@ -249,17 +277,18 @@
   .chat-send:hover{background:#f5ff80;}
   .chat-send:disabled{opacity:0.4;cursor:not-allowed;}
 
-  /* PROGRESS */
-  .prog-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(125px,1fr));gap:12px;margin-bottom:1.5rem;}
+  /* ══ PROGRESS ══ */
+  .prog-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(120px,1fr));gap:10px;margin-bottom:1.5rem;}
   .prog-stat{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:1.25rem;text-align:center;}
-  .prog-val{font-family:var(--fd);font-size:1.85rem;font-weight:700;line-height:1;margin-bottom:4px;}
-  .prog-lbl{font-size:0.72rem;color:var(--text3);font-weight:500;}
-  .t-row{display:flex;align-items:center;gap:12px;padding:10px 0;border-bottom:1px solid var(--border);}
+  .prog-val{font-family:var(--fd);font-size:1.7rem;font-weight:700;line-height:1;margin-bottom:4px;}
+  .prog-lbl{font-size:0.71rem;color:var(--text3);font-weight:500;}
+  .t-row{display:flex;align-items:center;gap:10px;padding:10px 0;border-bottom:1px solid var(--border);}
   .t-row:last-child{border-bottom:none;}
-  .t-row-name{font-size:0.84rem;font-weight:500;flex:1;min-width:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
-  .bar-wrap{width:110px;height:5px;background:var(--card2);border-radius:100px;overflow:hidden;flex-shrink:0;}
-  .bar{height:100%;background:var(--accent);border-radius:100px;transition:width 0.5s;}
-  .bar-pct{font-size:0.76rem;color:var(--text2);width:34px;text-align:right;flex-shrink:0;}
+  .t-row-name{font-size:0.83rem;font-weight:500;flex:1;min-width:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+  .bar-wrap{width:90px;height:5px;background:var(--card2);border-radius:100px;overflow:hidden;flex-shrink:0;}
+  .bar-inner{height:100%;background:var(--accent);border-radius:100px;transition:width 0.5s;}
+  .bar-pct{font-size:0.75rem;color:var(--text2);width:32px;text-align:right;flex-shrink:0;}
+  .time-badge{font-size:0.72rem;color:var(--blue);background:rgba(107,184,255,0.1);border:1px solid rgba(107,184,255,0.2);border-radius:100px;padding:2px 8px;flex-shrink:0;}
 
   /* MISC */
   .ai-ld{display:flex;align-items:center;gap:10px;padding:1.25rem;color:var(--text3);font-size:0.86rem;}
@@ -277,8 +306,11 @@
 
   @media(max-width:600px){
     .features{grid-template-columns:1fr 1fr;}
-    .tab-btn{padding:11px 12px;font-size:0.77rem;}
-    .btn-gen{margin-left:0;width:100%;}
+    .tab-btn{padding:10px 12px;font-size:0.76rem;}
+    .prac-filters{gap:6px;}
+    .diff-group{flex-wrap:wrap;}
+    .result-stats{grid-template-columns:repeat(3,1fr);}
+    .bar-label{width:70px;font-size:0.72rem;}
     .w-footer{flex-direction:column;text-align:center;}
   }
 </style>
@@ -287,132 +319,109 @@
 <div class="bg-grid"></div>
 <div class="bg-glow"></div>
 
-<!-- ══════════════════════════════════
-     PAGE 1 — WELCOME + API KEY
-══════════════════════════════════ -->
+<!-- PAGE 1: WELCOME -->
 <div id="pg-welcome" class="page active" style="flex-direction:column;">
-
   <nav class="w-nav">
     <div class="w-logo">PrepMind AI</div>
-    <div style="display:flex;align-items:center;gap:10px;">
-      <div class="free-badge">✦ 100% Free Forever</div>
-      <div class="w-badge">Powered by Gemini AI</div>
+    <div class="nav-badges">
+      <div class="badge badge-free">✦ Free Forever</div>
+      <div class="badge badge-groq">⚡ Powered by Groq AI</div>
     </div>
   </nav>
-
   <div class="w-hero">
-    <div class="eyebrow"><div class="live-dot"></div>Free · No Backend · Google Gemini AI</div>
-
+    <div class="eyebrow"><div class="live-dot"></div>No Credit Card · No Expiry · Works in India</div>
     <h1 class="w-title">Your Personal AI Tutor<br>for <span class="hl">Any Exam</span></h1>
-
-    <p class="w-desc">PrepMind AI uses Google's Gemini AI to generate personalized study plans, 10 fresh practice questions per session, topic-by-topic lessons, and a live AI doubt-solver — all tailored to your specific exam in seconds.</p>
-
-    <!-- FREE FOREVER BANNER -->
+    <p class="w-desc">PrepMind AI uses Groq's ultra-fast AI to generate personalized study plans, 10 fresh practice questions, topic-by-topic lessons, and a live doubt-solver — all tailored to your exam in seconds.</p>
     <div class="free-banner">
-      <div class="fb-icon">🎉</div>
-      <div class="fb-text">Completely Free Forever <span>— Google Gemini API has a free tier with no expiry. No credit card needed.</span></div>
+      <div class="fbi">🎉</div>
+      <div>
+        <div class="fbt-title">Truly Free Forever — No Tricks</div>
+        <div class="fbt-sub">Groq free tier: no expiry, no credit card, works in India. ~14,400 requests/day.</div>
+      </div>
     </div>
-
     <div class="features">
-      <div class="feat"><span class="feat-icon">🗺️</span><div class="feat-name">Smart Overview</div><div class="feat-desc">Exam pattern, syllabus, difficulty & 4-week study plan</div></div>
-      <div class="feat"><span class="feat-icon">🎯</span><div class="feat-name">10 Practice MCQs</div><div class="feat-desc">10 fresh questions per session by topic & difficulty</div></div>
-      <div class="feat"><span class="feat-icon">📖</span><div class="feat-name">Teach Me</div><div class="feat-desc">AI explains every topic with formulas, examples & tricks</div></div>
-      <div class="feat"><span class="feat-icon">💬</span><div class="feat-name">Ask Doubt</div><div class="feat-desc">Multi-turn AI tutor that knows your exact exam context</div></div>
-      <div class="feat"><span class="feat-icon">📊</span><div class="feat-name">Track Progress</div><div class="feat-desc">Live accuracy, score & topic-wise performance dashboard</div></div>
+      <div class="feat"><span class="feat-icon">🗺️</span><div class="feat-name">Smart Overview</div><div class="feat-desc">Exam pattern, syllabus & 4-week study plan</div></div>
+      <div class="feat"><span class="feat-icon">🎯</span><div class="feat-name">10 Practice MCQs</div><div class="feat-desc">10 questions per session with score analysis</div></div>
+      <div class="feat"><span class="feat-icon">📖</span><div class="feat-name">Teach Me</div><div class="feat-desc">AI lessons with formulas, examples & tricks</div></div>
+      <div class="feat"><span class="feat-icon">💬</span><div class="feat-name">Ask Doubt</div><div class="feat-desc">Multi-turn AI tutor for your exam context</div></div>
+      <div class="feat"><span class="feat-icon">📊</span><div class="feat-name">Self Analysis</div><div class="feat-desc">Score, accuracy, time spent & improvement tips</div></div>
     </div>
   </div>
-
   <hr class="sec-divider">
-
-  <!-- HOW IT WORKS -->
   <div class="how-sec">
     <h2 class="sec-title">How to Get Started — Free Forever</h2>
-    <p class="sec-sub">3 simple steps · takes less than 2 minutes · no credit card required</p>
-
+    <p class="sec-sub">3 simple steps · under 2 minutes · no credit card · works in India ✅</p>
     <div class="steps">
       <div class="step-row">
         <div class="step-circle">1</div>
         <div class="step-body">
-          <div class="step-title">Go to Google AI Studio</div>
-          <div class="step-detail">
-            Visit <a href="https://aistudio.google.com" target="_blank">aistudio.google.com</a> and sign in with your <strong>Google account</strong> (Gmail). No new account needed — just use your existing Google account.
-            <br><span class="step-tag green">✓ Free · Uses your existing Google account</span>
-          </div>
+          <div class="step-title">Go to Groq Console</div>
+          <div class="step-detail">Visit <a href="https://console.groq.com" target="_blank">console.groq.com</a> and sign up free using your <strong>Gmail account</strong>.
+          <br><span class="step-tag tag-green">✓ Free signup · No credit card · Works in India</span></div>
         </div>
       </div>
-
       <div class="step-row">
         <div class="step-circle">2</div>
         <div class="step-body">
-          <div class="step-title">Get Your Free API Key</div>
-          <div class="step-detail">
-            Once inside AI Studio, click <strong>"Get API Key"</strong> on the left sidebar → click <strong>"Create API Key"</strong> → copy the key shown. It looks like: <code style="background:var(--card2);padding:1px 6px;border-radius:4px;font-size:0.82em">AIzaSy...</code>
-            <br><span class="step-tag green">🔑 Free tier · No credit card · No expiry</span>
-          </div>
+          <div class="step-title">Create Your Free API Key</div>
+          <div class="step-detail">Click <strong>"API Keys"</strong> in the left sidebar → <strong>"Create API Key"</strong> → copy it. Looks like: <code style="background:var(--card2);padding:1px 6px;border-radius:4px;font-size:0.82em">gsk_...</code>
+          <br><span class="step-tag tag-green">🔑 Free · ~14,400 req/day · No expiry</span></div>
         </div>
       </div>
-
       <div class="step-row">
         <div class="step-circle">3</div>
         <div class="step-body">
           <div class="step-title">Paste It Below & Start Prepping!</div>
-          <div class="step-detail">
-            Paste your Gemini API key in the box below. It's saved in your browser — you <strong>won't need to enter it again</strong> on this device. Then type your exam name and your full AI dashboard is ready instantly!
-            <br><span class="step-tag green">🚀 Free to use · No limits on exam types</span>
-          </div>
+          <div class="step-detail">Paste your key below — it saves in your browser so you <strong>won't need to enter it again</strong>.
+          <br><span class="step-tag tag-yellow">🚀 Instant · All exam types · Free forever</span></div>
         </div>
       </div>
     </div>
   </div>
-
-  <!-- API KEY INPUT -->
   <div class="apikey-sec">
     <div class="apikey-card">
-      <div class="ak-title">🔑 Enter Your Gemini API Key</div>
-      <div class="ak-sub">Get your free key from <a href="https://aistudio.google.com" target="_blank" style="color:var(--green);font-weight:600;">aistudio.google.com</a> → "Get API Key" → "Create API Key". Your key is stored only in your browser and never sent to any server other than Google's.</div>
-
-      <label class="inp-label" for="apiKeyInput">Gemini API Key</label>
+      <div class="ak-title">🔑 Enter Your Groq API Key</div>
+      <div class="ak-sub">Get your free key from <a href="https://console.groq.com" target="_blank">console.groq.com</a> → API Keys → Create API Key. Saved only in your browser — never sent to our servers.</div>
+      <div class="limits-box">
+        <div class="limits-title">Groq Free Tier — Honest Info</div>
+        <div class="limits-row"><span>Requests per day</span><span>~14,400 ✅</span></div>
+        <div class="limits-row"><span>Credit card needed</span><span>No ✅</span></div>
+        <div class="limits-row"><span>Expiry</span><span>Never ✅</span></div>
+        <div class="limits-row"><span>Works in India</span><span>Yes ✅</span></div>
+      </div>
+      <label class="inp-label">Groq API Key</label>
       <div class="key-wrap">
-        <input type="password" id="apiKeyInput" placeholder="AIzaSy..." autocomplete="off" spellcheck="false" onkeydown="if(event.key==='Enter')saveKey()"/>
+        <input type="password" id="apiKeyInput" placeholder="gsk_..." autocomplete="off" spellcheck="false" onkeydown="if(event.key==='Enter')saveKey()"/>
         <button class="eye-btn" onclick="toggleEye()">👁</button>
       </div>
-
-      <div class="key-err" id="keyErr">⚠️ <span id="keyErrMsg">Please enter your API key.</span></div>
-
+      <div class="key-err" id="keyErr">⚠️ <span id="keyErrMsg">Please enter your Groq API key.</span></div>
       <button class="btn-cont" onclick="saveKey()">Start Prepping for Free →</button>
-
       <div class="privacy-box">
         <div class="pi">🛡️</div>
-        <div class="pt"><strong>100% Private & Free.</strong> Your API key stays only in your browser's local storage. All AI calls go directly from your browser to Google's servers. This site has no backend and stores nothing. The Gemini free tier has no time limit.</div>
+        <div class="pt"><strong>100% Private & Free.</strong> Your key stays in your browser only. All AI calls go directly to Groq's servers. No backend, no data collection.</div>
       </div>
     </div>
   </div>
-
   <footer class="w-footer">
     <div class="w-footer-logo">PrepMind AI</div>
-    <div class="w-footer-note">Powered by Google Gemini API · Free Forever · No backend · No data collection</div>
+    <div class="w-footer-note">Powered by Groq API · Truly Free Forever · No backend · No data collection</div>
   </footer>
 </div>
 
-<!-- ══════════════════════════════════
-     PAGE 2 — EXAM SELECT
-══════════════════════════════════ -->
+<!-- PAGE 2: EXAM SELECT -->
 <div id="pg-landing" class="page" style="flex-direction:column;align-items:center;justify-content:center;padding:2rem;">
   <div class="landing-inner">
-    <div class="logo-badge"><div class="live-dot"></div>PrepMind AI · Free Forever</div>
+    <div class="logo-badge"><div class="live-dot"></div>PrepMind AI · Groq Powered · Free</div>
     <h1 class="hero">Crack <span>Any Exam</span><br>with AI</h1>
     <p class="hero-sub">Enter your exam name to unlock a full AI-powered prep dashboard — overview, 10 practice questions, topic lessons & live doubt solving.</p>
-
     <div class="key-bar">
-      <div class="key-bar-left"><div class="green-dot"></div><span>Gemini API connected · Free tier active</span></div>
+      <div class="key-bar-left"><div class="green-dot"></div><span>Groq API connected · Free tier active</span></div>
       <button class="change-btn" onclick="changeKey()">Change Key</button>
     </div>
-
     <div class="exam-wrap">
       <input type="text" id="examInput" placeholder="e.g. TCS NQT, GATE CSE, CAT, SBI PO…" autocomplete="off" spellcheck="false" onkeydown="if(event.key==='Enter')startPrep()"/>
     </div>
-    <button class="btn-primary" onclick="startPrep()">🚀 Start Preparing Now</button>
-
+    <center><button class="btn-primary" onclick="startPrep()">🚀 Start Preparing Now</button></center>
     <div class="chip-row">
       <span class="chip" onclick="se('TCS NQT')">TCS NQT</span>
       <span class="chip" onclick="se('GATE CSE')">GATE CSE</span>
@@ -428,9 +437,7 @@
   </div>
 </div>
 
-<!-- ══════════════════════════════════
-     LOADING
-══════════════════════════════════ -->
+<!-- LOADING -->
 <div id="pg-loading" class="page" style="flex-direction:column;align-items:center;justify-content:center;gap:2rem;padding:2rem;">
   <div class="ld-logo">PrepMind AI</div>
   <div class="ld-title">Analyzing <span style="color:var(--accent)" id="ldExam"></span>…</div>
@@ -442,14 +449,12 @@
   </div>
 </div>
 
-<!-- ══════════════════════════════════
-     DASHBOARD
-══════════════════════════════════ -->
+<!-- DASHBOARD -->
 <div id="pg-dash" class="page" style="flex-direction:column;">
   <header class="topbar">
     <div class="tb-logo">PrepMind AI</div>
     <div class="tb-exam" id="tbExam"></div>
-    <div class="tb-free">✦ Free</div>
+    <div class="tb-free">⚡ Groq Free</div>
     <button class="tb-back" onclick="goLanding()">← Change Exam</button>
   </header>
   <nav class="tab-nav">
@@ -457,21 +462,39 @@
     <button class="tab-btn" onclick="switchTab('pr',this)">🎯 Practice</button>
     <button class="tab-btn" onclick="switchTab('te',this)">📖 Teach Me</button>
     <button class="tab-btn" onclick="switchTab('do',this)">💬 Ask Doubt</button>
-    <button class="tab-btn" onclick="switchTab('pg',this)">📊 Progress</button>
+    <button class="tab-btn" onclick="switchTab('pg',this)">📊 Self Analysis</button>
   </nav>
   <div class="tab-content">
-    <div class="tab-panel active" id="panel-ov"><div id="ovContent"><div class="ai-ld"><div class="dots"><span></span><span></span><span></span></div>Loading overview…</div></div></div>
+    <!-- OVERVIEW -->
+    <div class="tab-panel active" id="panel-ov">
+      <div id="ovContent"><div class="ai-ld"><div class="dots"><span></span><span></span><span></span></div>Loading overview…</div></div>
+    </div>
+    <!-- PRACTICE -->
     <div class="tab-panel" id="panel-pr">
       <div class="prac-filters">
         <select class="f-sel" id="topicSel"><option value="">All Topics</option></select>
-        <button class="d-btn" id="dE" onclick="setD('E')">Easy</button>
-        <button class="d-btn" id="dM" onclick="setD('M')">Medium</button>
-        <button class="d-btn" id="dH" onclick="setD('H')">Hard</button>
+        <div class="diff-group">
+          <button class="d-btn" id="dE" onclick="setD('E')">Easy</button>
+          <button class="d-btn" id="dM" onclick="setD('M')">Medium</button>
+          <button class="d-btn" id="dH" onclick="setD('H')">Hard</button>
+        </div>
         <button class="btn-gen" id="genBtn" onclick="genQ()">⚡ Generate 10 Questions</button>
       </div>
       <div id="qCont"><div class="empty"><div class="ei">🎯</div><p>Select a topic & difficulty, then click Generate 10 Questions.</p></div></div>
+      <!-- SUBMIT SECTION -->
+      <div class="submit-section" id="submitSection">
+        <div class="submit-title">✅ All 10 Questions Done!</div>
+        <div class="submit-sub">Click Submit to see your score, accuracy and AI analysis.</div>
+        <button class="btn-submit" onclick="submitQuiz()">Submit & See Results →</button>
+      </div>
+      <!-- RESULT PANEL -->
+      <div class="result-panel" id="resultPanel"></div>
     </div>
-    <div class="tab-panel" id="panel-te"><div id="teContent"><div class="ai-ld"><div class="dots"><span></span><span></span><span></span></div>Loading topics…</div></div></div>
+    <!-- TEACH ME -->
+    <div class="tab-panel" id="panel-te">
+      <div id="teContent"><div class="ai-ld"><div class="dots"><span></span><span></span><span></span></div>Loading topics…</div></div>
+    </div>
+    <!-- CHAT -->
     <div class="tab-panel" id="panel-do">
       <div class="chat-wrap">
         <div class="chat-msgs" id="chatMsgs"></div>
@@ -481,57 +504,46 @@
         </div>
       </div>
     </div>
-    <div class="tab-panel" id="panel-pg"><div id="pgContent"></div></div>
+    <!-- SELF ANALYSIS -->
+    <div class="tab-panel" id="panel-pg">
+      <div id="pgContent"></div>
+    </div>
   </div>
 </div>
 
 <script>
 // ──────────────────────────────────────
-//  GEMINI API CALL
+//  GROQ API
 // ──────────────────────────────────────
-// Using gemini-2.0-flash — free tier, no expiry
-const GEMINI_MODEL = 'gemini-2.0-flash';
+const GROQ_MODEL = 'llama-3.3-70b-versatile';
+const GROQ_URL = 'https://api.groq.com/openai/v1/chat/completions';
 
-async function gemini(prompt) {
-  const url = `https://generativelanguage.googleapis.com/v1beta/models/${GEMINI_MODEL}:generateContent?key=${KEY}`;
-  const body = {
-    contents: [{ parts: [{ text: prompt }] }],
-    generationConfig: { temperature: 0.7, maxOutputTokens: 2048 }
-  };
-  const r = await fetch(url, {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify(body)
+async function groq(prompt, system = '') {
+  const messages = [];
+  if (system) messages.push({ role:'system', content:system });
+  messages.push({ role:'user', content:prompt });
+  const r = await fetch(GROQ_URL, {
+    method:'POST',
+    headers:{ 'Content-Type':'application/json', 'Authorization':`Bearer ${KEY}` },
+    body: JSON.stringify({ model:GROQ_MODEL, messages, temperature:0.7, max_tokens:2048 })
   });
-  if (!r.ok) {
-    const e = await r.json().catch(() => ({}));
-    throw new Error(e.error?.message || `Gemini API error ${r.status}`);
-  }
+  if (!r.ok) { const e = await r.json().catch(()=>({})); throw new Error(e.error?.message||`Groq API error ${r.status}`); }
   const d = await r.json();
-  return d.candidates?.[0]?.content?.parts?.[0]?.text || '';
+  return d.choices?.[0]?.message?.content || '';
 }
 
-async function geminiChat(history, system = '') {
-  const url = `https://generativelanguage.googleapis.com/v1beta/models/${GEMINI_MODEL}:generateContent?key=${KEY}`;
-  // Build contents from history
-  const contents = history.map(m => ({
-    role: m.role === 'assistant' ? 'model' : 'user',
-    parts: [{ text: m.content }]
-  }));
-  // Prepend system as first user message if provided
-  if (system) {
-    contents.unshift({ role: 'user', parts: [{ text: `[System context]: ${system}` }] });
-    contents.splice(1, 0, { role: 'model', parts: [{ text: 'Understood. I will act accordingly.' }] });
-  }
-  const body = { contents, generationConfig: { temperature: 0.7, maxOutputTokens: 1024 } };
-  const r = await fetch(url, {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify(body)
+async function groqChat(history, system = '') {
+  const messages = [];
+  if (system) messages.push({ role:'system', content:system });
+  history.forEach(m => messages.push({ role: m.role==='assistant'?'assistant':'user', content:m.content }));
+  const r = await fetch(GROQ_URL, {
+    method:'POST',
+    headers:{ 'Content-Type':'application/json', 'Authorization':`Bearer ${KEY}` },
+    body: JSON.stringify({ model:GROQ_MODEL, messages, temperature:0.7, max_tokens:1024 })
   });
-  if (!r.ok) throw new Error(`Gemini API error ${r.status}`);
+  if (!r.ok) throw new Error(`Groq API error ${r.status}`);
   const d = await r.json();
-  return d.candidates?.[0]?.content?.parts?.[0]?.text || '';
+  return d.choices?.[0]?.message?.content || '';
 }
 
 // ──────────────────────────────────────
@@ -541,43 +553,40 @@ let KEY = '';
 let S = {
   exam:'', topics:[], diff:'M',
   chatHist:[], answered:new Set(),
-  prog:{ total:0, correct:0, topics:{} }
+  currentQs:[], currentTopic:'', currentDiff:'',
+  sessionStart: null,
+  prog:{
+    total:0, correct:0, sessions:0,
+    topics:{},       // { topic: { total, correct, timeMs } }
+    topicTimers:{}   // { topic: startTime }
+  }
 };
 
 // ──────────────────────────────────────
 //  INIT
 // ──────────────────────────────────────
 window.addEventListener('DOMContentLoaded', () => {
-  const k = localStorage.getItem('pm_gemini_key');
+  const k = localStorage.getItem('pm_groq_key');
   if (k) { KEY = k; document.getElementById('apiKeyInput').value = k; showPg('pg-landing'); }
   setD('M');
 });
 
 // ──────────────────────────────────────
-//  API KEY PAGE
+//  API KEY
 // ──────────────────────────────────────
 function toggleEye() {
   const i = document.getElementById('apiKeyInput');
   i.type = i.type === 'password' ? 'text' : 'password';
 }
-
 function saveKey() {
   const v = document.getElementById('apiKeyInput').value.trim();
-  const err = document.getElementById('keyErr');
-  const msg = document.getElementById('keyErrMsg');
-  if (!v) { msg.textContent = 'Please enter your Gemini API key.'; err.classList.add('show'); return; }
-  if (!v.startsWith('AIza')) { msg.textContent = 'Invalid key — Gemini keys start with "AIza"'; err.classList.add('show'); return; }
+  const err = document.getElementById('keyErr'), msg = document.getElementById('keyErrMsg');
+  if (!v) { msg.textContent='Please enter your Groq API key.'; err.classList.add('show'); return; }
+  if (!v.startsWith('gsk_')) { msg.textContent='Invalid key — Groq keys start with "gsk_"'; err.classList.add('show'); return; }
   err.classList.remove('show');
-  KEY = v;
-  localStorage.setItem('pm_gemini_key', v);
-  showPg('pg-landing');
+  KEY = v; localStorage.setItem('pm_groq_key', v); showPg('pg-landing');
 }
-
-function changeKey() {
-  localStorage.removeItem('pm_gemini_key');
-  KEY = '';
-  showPg('pg-welcome');
-}
+function changeKey() { localStorage.removeItem('pm_groq_key'); KEY=''; showPg('pg-welcome'); }
 
 // ──────────────────────────────────────
 //  NAVIGATION
@@ -585,21 +594,22 @@ function changeKey() {
 function showPg(id) {
   document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
   document.getElementById(id).classList.add('active');
-  window.scrollTo(0, 0);
+  window.scrollTo(0,0);
 }
-
 function goLanding() {
-  S = { exam:'', topics:[], diff:'M', chatHist:[], answered:new Set(), prog:{ total:0, correct:0, topics:{} } };
+  S = { exam:'', topics:[], diff:'M', chatHist:[], answered:new Set(), currentQs:[], currentTopic:'', currentDiff:'', sessionStart:null, prog:{total:0,correct:0,sessions:0,topics:{},topicTimers:{}} };
   document.getElementById('examInput').value = '';
   document.getElementById('ovContent').innerHTML = `<div class="ai-ld"><div class="dots"><span></span><span></span><span></span></div>Loading overview…</div>`;
   document.getElementById('teContent').innerHTML = `<div class="ai-ld"><div class="dots"><span></span><span></span><span></span></div>Loading topics…</div>`;
   document.getElementById('qCont').innerHTML = `<div class="empty"><div class="ei">🎯</div><p>Select topic & difficulty then click Generate 10 Questions.</p></div>`;
   document.getElementById('chatMsgs').innerHTML = '';
   document.getElementById('topicSel').innerHTML = '<option value="">All Topics</option>';
+  document.getElementById('submitSection').classList.remove('visible');
+  document.getElementById('resultPanel').classList.remove('visible');
+  document.getElementById('resultPanel').innerHTML = '';
   setD('M');
-  // reset tabs
-  document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
-  document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+  document.querySelectorAll('.tab-panel').forEach(p=>p.classList.remove('active'));
+  document.querySelectorAll('.tab-btn').forEach(b=>b.classList.remove('active'));
   document.getElementById('panel-ov').classList.add('active');
   document.querySelectorAll('.tab-btn')[0].classList.add('active');
   showPg('pg-landing');
@@ -609,10 +619,9 @@ function goLanding() {
 //  EXAM SELECT
 // ──────────────────────────────────────
 function se(name) { document.getElementById('examInput').value = name; document.getElementById('examInput').focus(); }
-
 async function startPrep() {
   const v = document.getElementById('examInput').value.trim();
-  if (!v) { const i = document.getElementById('examInput'); i.style.borderColor = 'var(--red)'; setTimeout(() => i.style.borderColor = '', 1000); return; }
+  if (!v) { const i=document.getElementById('examInput'); i.style.borderColor='var(--red)'; setTimeout(()=>i.style.borderColor='',1000); return; }
   S.exam = v;
   document.getElementById('ldExam').textContent = v;
   document.getElementById('tbExam').textContent = v;
@@ -621,16 +630,13 @@ async function startPrep() {
   showPg('pg-dash');
   loadOv(); initChat(); renderProg();
 }
-
 const sl = ms => new Promise(r => setTimeout(r, ms));
-
 async function runAnim() {
-  const ids = ['s1','s2','s3','s4'];
-  ids.forEach(id => { const e = document.getElementById(id); e.classList.remove('active','done'); });
+  const ids=['s1','s2','s3','s4'];
+  ids.forEach(id=>{const e=document.getElementById(id);e.classList.remove('active','done');});
   for (const id of ids) {
-    const e = document.getElementById(id);
-    e.classList.add('active');
-    await sl(650 + Math.random() * 400);
+    const e=document.getElementById(id);
+    e.classList.add('active'); await sl(650+Math.random()*400);
     e.classList.remove('active'); e.classList.add('done');
   }
 }
@@ -639,11 +645,11 @@ async function runAnim() {
 //  TABS
 // ──────────────────────────────────────
 function switchTab(name, btn) {
-  document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
-  document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
-  document.getElementById('panel-' + name).classList.add('active');
+  document.querySelectorAll('.tab-panel').forEach(p=>p.classList.remove('active'));
+  document.querySelectorAll('.tab-btn').forEach(b=>b.classList.remove('active'));
+  document.getElementById('panel-'+name).classList.add('active');
   btn.classList.add('active');
-  if (name === 'pg') renderProg();
+  if (name==='pg') renderProg();
 }
 
 // ──────────────────────────────────────
@@ -651,23 +657,24 @@ function switchTab(name, btn) {
 // ──────────────────────────────────────
 async function loadOv() {
   const c = document.getElementById('ovContent');
-  c.innerHTML = `<div class="ai-ld"><div class="dots"><span></span><span></span><span></span></div>Analyzing ${eh(S.exam)} with Gemini AI…</div>`;
+  c.innerHTML = `<div class="ai-ld"><div class="dots"><span></span><span></span><span></span></div>Analyzing ${eh(S.exam)} with Groq AI…</div>`;
   try {
-    const raw = await gemini(
-      `For the "${S.exam}" exam, respond ONLY with valid JSON (absolutely no markdown, no backticks, no extra text):
-{"fullName":"full official name","conductedBy":"organization name","difficulty":"Easy or Moderate or Hard","totalQuestions":"number","duration":"X mins","negativeMark":"yes -0.25 or no","syllabus":["Topic1","Topic2","Topic3","Topic4","Topic5","Topic6","Topic7","Topic8"],"strategy":"3-4 sentence practical exam strategy","weekPlan":"4-week study plan in 3-4 sentences","keyFacts":["important fact 1","important fact 2","important fact 3","important fact 4"]}`
+    const raw = await groq(
+      `For the "${S.exam}" exam, respond ONLY with valid JSON — no markdown, no backticks, no extra text:
+{"fullName":"full official exam name","conductedBy":"conducting organization","difficulty":"Easy or Moderate or Hard","totalQuestions":"number","duration":"X mins","negativeMark":"yes -0.25 or no","syllabus":["Topic1","Topic2","Topic3","Topic4","Topic5","Topic6","Topic7","Topic8"],"strategy":"3-4 sentence practical exam strategy","weekPlan":"4-week study plan in 3-4 sentences","keyFacts":["key fact 1","key fact 2","key fact 3","key fact 4"]}`,
+      'You are an expert exam counselor. Respond ONLY with the requested JSON. No markdown. No explanation.'
     );
     let d;
     try { d = JSON.parse(raw.replace(/```json|```/g,'').trim()); }
-    catch { c.innerHTML = `<div class="card"><div class="mdc">${mdr(raw)}</div></div>`; return; }
-    S.topics = d.syllabus || [];
+    catch { c.innerHTML=`<div class="card"><div class="mdc">${mdr(raw)}</div></div>`; return; }
+    S.topics = d.syllabus||[];
     fillTopicSel(S.topics); renderTeach(S.topics);
     c.innerHTML = `
       <div class="ov-grid">
         <div class="ov-stat"><div class="ov-val">${eh(d.totalQuestions)}</div><div class="ov-lbl">Questions</div></div>
         <div class="ov-stat"><div class="ov-val">${eh(d.duration)}</div><div class="ov-lbl">Duration</div></div>
-        <div class="ov-stat"><div class="ov-val" style="font-size:1.1rem">${eh(d.difficulty)}</div><div class="ov-lbl">Difficulty</div></div>
-        <div class="ov-stat"><div class="ov-val" style="font-size:0.92rem;color:var(--red)">${eh(d.negativeMark)}</div><div class="ov-lbl">Negative Mark</div></div>
+        <div class="ov-stat"><div class="ov-val" style="font-size:1rem">${eh(d.difficulty)}</div><div class="ov-lbl">Difficulty</div></div>
+        <div class="ov-stat"><div class="ov-val" style="font-size:0.88rem;color:var(--red)">${eh(d.negativeMark)}</div><div class="ov-lbl">Negative Mark</div></div>
       </div>
       <div class="card">
         <div class="card-title">📋 About the Exam</div>
@@ -679,85 +686,95 @@ async function loadOv() {
       <div class="card">
         <div class="card-title">📚 Syllabus Topics</div>
         <div class="sec-lbl">Click any topic to open its lesson in Teach Me</div>
-        <div class="chips-wrap">${d.syllabus.map(t => `<div class="topic-chip" onclick="gotoTeach('${ea(t)}')">${eh(t)}</div>`).join('')}</div>
+        <div class="chips-wrap">${d.syllabus.map(t=>`<div class="topic-chip" onclick="gotoTeach('${ea(t)}')">${eh(t)}</div>`).join('')}</div>
       </div>
       <div class="card"><div class="card-title">🎯 Strategy</div><div class="mdc">${eh(d.strategy)}</div></div>
       <div class="card"><div class="card-title">📅 4-Week Study Plan</div><div class="mdc">${eh(d.weekPlan)}</div></div>
-      <div class="card"><div class="card-title">⚡ Key Facts</div><ul class="mdc" style="padding-left:1.2rem">${d.keyFacts.map(f => `<li>${eh(f)}</li>`).join('')}</ul></div>`;
-  } catch (e) {
-    c.innerHTML = `<div class="card"><p style="color:var(--red)">Error: ${eh(e.message)}<br><br>Please check your Gemini API key and try again.<br>Get a free key at <a href="https://aistudio.google.com" target="_blank" style="color:var(--accent)">aistudio.google.com</a></p></div>`;
+      <div class="card"><div class="card-title">⚡ Key Facts</div><ul class="mdc" style="padding-left:1.2rem">${d.keyFacts.map(f=>`<li>${eh(f)}</li>`).join('')}</ul></div>`;
+  } catch(e) {
+    c.innerHTML = `<div class="card"><p style="color:var(--red)">Error: ${eh(e.message)}<br><br>Check your Groq API key and try again.<br><a href="https://console.groq.com" target="_blank" style="color:var(--accent)">console.groq.com</a></p></div>`;
   }
 }
-
 function gotoTeach(topic) {
   document.querySelectorAll('.tab-btn')[2].click();
-  setTimeout(() => {
-    document.querySelectorAll('.t-card').forEach(c => {
-      if (c.dataset.topic === topic) { c.scrollIntoView({ behavior:'smooth', block:'start' }); if (!c.classList.contains('open')) c.querySelector('.t-head').click(); }
+  setTimeout(()=>{
+    document.querySelectorAll('.t-card').forEach(c=>{
+      if(c.dataset.topic===topic){c.scrollIntoView({behavior:'smooth',block:'start'});if(!c.classList.contains('open'))c.querySelector('.t-head').click();}
     });
-  }, 300);
+  },300);
 }
 
 // ──────────────────────────────────────
-//  TAB 2 — PRACTICE (10 QUESTIONS)
+//  TAB 2 — PRACTICE
 // ──────────────────────────────────────
 function fillTopicSel(topics) {
   const s = document.getElementById('topicSel');
   s.innerHTML = '<option value="">All Topics</option>';
-  topics.forEach(t => { const o = document.createElement('option'); o.value = t; o.textContent = t; s.appendChild(o); });
+  topics.forEach(t=>{const o=document.createElement('option');o.value=t;o.textContent=t;s.appendChild(o);});
 }
-
 function setD(d) {
   S.diff = d;
-  document.querySelectorAll('.d-btn').forEach(b => b.className = 'd-btn');
-  const m = { E:'ae', M:'am', H:'ah' };
-  document.getElementById('d' + d).classList.add(m[d]);
+  document.querySelectorAll('.d-btn').forEach(b=>b.className='d-btn');
+  const m={E:'ae',M:'am',H:'ah'};
+  document.getElementById('d'+d).classList.add(m[d]);
 }
 
 async function genQ() {
   const btn = document.getElementById('genBtn');
   const topic = document.getElementById('topicSel').value || 'General';
-  const diffMap = { E:'Easy', M:'Medium', H:'Hard' };
+  const diffMap = {E:'Easy',M:'Medium',H:'Hard'};
   const diff = diffMap[S.diff];
   const c = document.getElementById('qCont');
   S.answered = new Set();
-  btn.disabled = true; btn.textContent = '⏳ Generating 10 Questions…';
-  c.innerHTML = `<div class="ai-ld"><div class="dots"><span></span><span></span><span></span></div>Creating 10 ${diff} questions on ${eh(topic)} using Gemini AI…</div>`;
+  S.currentTopic = topic;
+  S.currentDiff = diff;
+  S.currentQs = [];
+  S.sessionStart = Date.now();
+  document.getElementById('submitSection').classList.remove('visible');
+  document.getElementById('resultPanel').classList.remove('visible');
+  document.getElementById('resultPanel').innerHTML = '';
+
+  // Start time tracking for this topic
+  if (!S.prog.topics[topic]) S.prog.topics[topic] = {total:0, correct:0, timeMs:0};
+  S.prog.topicTimers[topic] = Date.now();
+
+  btn.disabled=true; btn.textContent='⏳ Generating 10 Questions…';
+  c.innerHTML = `<div class="ai-ld"><div class="dots"><span></span><span></span><span></span></div>Creating 10 ${diff} questions on ${eh(topic)} using Groq AI…</div>`;
+
   try {
-    const raw = await gemini(
-      `Generate exactly 10 multiple choice questions for the "${S.exam}" exam on the topic "${topic}" at "${diff}" difficulty level.
-Respond ONLY with a valid JSON array — no markdown, no backticks, no explanation:
-[{"question":"question text here","options":["option A","option B","option C","option D"],"correct":0,"explanation":"why the correct answer is right","trick":"memory trick or shortcut to remember"}]
-Rules:
-- "correct" must be the 0-based index (0, 1, 2, or 3) of the correct option
-- Make all 10 questions unique and realistic for the actual ${S.exam} exam
-- Options should be plausible and exam-relevant
-- Explanation should be clear and educational
-- Trick should be a genuine memory aid`
+    const raw = await groq(
+      `Generate exactly 10 multiple choice questions for the "${S.exam}" exam on topic "${topic}" at "${diff}" difficulty.
+Return ONLY a valid JSON array — no markdown, no explanation, no text before or after:
+[{"question":"question text","options":["option A","option B","option C","option D"],"correct":0,"explanation":"clear explanation","trick":"memory trick or shortcut"}]
+- "correct" = 0-based index (0,1,2,3)
+- All 10 questions must be unique and realistic for ${S.exam}
+- Options must be plausible
+- Explanation must be educational`,
+      'You are an expert exam question setter. Return ONLY a valid JSON array with exactly 10 questions. No markdown, no extra text.'
     );
     let qs;
     try {
-      const clean = raw.replace(/```json|```/g, '').trim();
-      qs = JSON.parse(clean);
-    } catch {
-      c.innerHTML = `<div class="card"><p style="color:var(--red)">Could not parse questions. Please try again.</p></div>`;
-      return;
-    }
-    // Ensure we have array
-    if (!Array.isArray(qs)) { c.innerHTML = `<div class="card"><p style="color:var(--red)">Unexpected response format. Try again.</p></div>`; return; }
-    const L = ['A','B','C','D'];
-    c.innerHTML = qs.map((q, qi) => `
-      <div class="q-card">
+      const clean = raw.replace(/```json|```/g,'').trim();
+      const match = clean.match(/\[[\s\S]*\]/);
+      qs = JSON.parse(match ? match[0] : clean);
+    } catch { c.innerHTML=`<div class="card"><p style="color:var(--red)">Could not parse questions. Try again.</p></div>`; return; }
+    if (!Array.isArray(qs)||qs.length===0) { c.innerHTML=`<div class="card"><p style="color:var(--red)">Unexpected response. Try again.</p></div>`; return; }
+
+    S.currentQs = qs;
+    const L=['A','B','C','D'];
+    c.innerHTML = qs.map((q,qi)=>`
+      <div class="q-card" id="qcard${qi}">
         <div class="q-head">
           <span class="q-num">Q${qi+1}</span>
           <span class="q-diff ${diff.toLowerCase()}">${diff}</span>
-          <span style="font-size:0.71rem;color:var(--text3);margin-left:auto">${eh(topic)}</span>
+          <span class="q-topic-tag">${eh(topic)}</span>
         </div>
         <div class="q-text">${eh(q.question)}</div>
         <div class="opts" id="o${qi}">
-          ${q.options.map((op, oi) => `
-            <button class="opt" onclick="ans(${qi},${oi},${q.correct},'${ea(q.explanation)}','${ea(q.trick)}','${ea(topic)}')" id="o${qi}_${oi}">
-              <span class="opt-l">${L[oi]}</span>${eh(op)}
+          ${q.options.map((op,oi)=>`
+            <button class="opt" onclick="ans(${qi},${oi},${q.correct})" id="o${qi}_${oi}">
+              <span class="opt-l">${L[oi]}</span>
+              <span class="opt-text">${eh(op)}</span>
             </button>`).join('')}
         </div>
         <div class="exp-box" id="e${qi}">
@@ -765,26 +782,150 @@ Rules:
           <div class="exp-txt" id="et${qi}"></div>
         </div>
       </div>`).join('');
-  } catch (e) {
+
+  } catch(e) {
     c.innerHTML = `<div class="card"><p style="color:var(--red)">Error: ${eh(e.message)}</p></div>`;
   } finally {
-    btn.disabled = false; btn.textContent = '⚡ Generate 10 Questions';
+    btn.disabled=false; btn.textContent='⚡ Generate 10 Questions';
   }
 }
 
-function ans(qi, chosen, correct, explanation, trick, topic) {
+function ans(qi, chosen, correct) {
   if (S.answered.has(qi)) return;
   S.answered.add(qi);
-  document.getElementById('o' + qi).querySelectorAll('.opt').forEach((b, i) => {
-    b.disabled = true;
-    if (i === correct) b.classList.add('correct');
-    else if (i === chosen) b.classList.add('wrong');
+
+  // Store answer
+  S.currentQs[qi]._chosen = chosen;
+  S.currentQs[qi]._correct = correct;
+
+  const optEl = document.getElementById('o'+qi);
+  optEl.querySelectorAll('.opt').forEach((b,i)=>{
+    b.disabled=true;
+    if(i===correct) b.classList.add('correct');
+    else if(i===chosen) b.classList.add('wrong');
   });
-  const exp = document.getElementById('e' + qi); exp.classList.add('vis');
-  document.getElementById('et' + qi).innerHTML = `<strong>Explanation:</strong> ${eh(explanation)}<br><br><strong>🧠 Trick:</strong> ${eh(trick)}`;
-  S.prog.total++; if (chosen === correct) S.prog.correct++;
-  if (!S.prog.topics[topic]) S.prog.topics[topic] = { total:0, correct:0 };
-  S.prog.topics[topic].total++; if (chosen === correct) S.prog.topics[topic].correct++;
+
+  const exp = document.getElementById('e'+qi); exp.classList.add('vis');
+  document.getElementById('et'+qi).innerHTML =
+    `<strong>Explanation:</strong> ${eh(S.currentQs[qi].explanation)}<br><br><strong>🧠 Trick:</strong> ${eh(S.currentQs[qi].trick)}`;
+
+  // Show submit button when all 10 answered
+  if (S.answered.size === S.currentQs.length) {
+    setTimeout(()=>{
+      document.getElementById('submitSection').classList.add('visible');
+      document.getElementById('submitSection').scrollIntoView({behavior:'smooth', block:'center'});
+    }, 400);
+  }
+}
+
+async function submitQuiz() {
+  const topic = S.currentTopic;
+  const diff = S.currentDiff;
+  const qs = S.currentQs;
+
+  // Calculate score
+  let correct = 0;
+  const wrongQs = [];
+  qs.forEach((q,i)=>{
+    if(q._chosen===q._correct) correct++;
+    else wrongQs.push({q:q.question, chosen:q.options[q._chosen], right:q.options[q._correct]});
+  });
+
+  const total = qs.length;
+  const acc = Math.round((correct/total)*100);
+  const timeMs = Date.now() - S.sessionStart;
+  const timeSec = Math.round(timeMs/1000);
+
+  // Update progress
+  S.prog.total += total;
+  S.prog.correct += correct;
+  S.prog.sessions++;
+  if (!S.prog.topics[topic]) S.prog.topics[topic]={total:0,correct:0,timeMs:0};
+  S.prog.topics[topic].total += total;
+  S.prog.topics[topic].correct += correct;
+  S.prog.topics[topic].timeMs += timeMs;
+  if (S.prog.topicTimers[topic]) delete S.prog.topicTimers[topic];
+
+  // Hide submit button
+  document.getElementById('submitSection').classList.remove('visible');
+
+  // Show result panel loading
+  const rp = document.getElementById('resultPanel');
+  rp.classList.add('visible');
+  rp.innerHTML = `
+    <div class="result-hero">
+      <div class="result-score" style="color:${acc>=70?'var(--green)':acc>=40?'#ffc846':'var(--red)'}">${acc}%</div>
+      <div class="result-label">Accuracy · ${correct}/${total} Correct · ${fmtTime(timeSec)}</div>
+      <div class="result-stats">
+        <div class="rs"><div class="rs-val" style="color:var(--green)">${correct}</div><div class="rs-lbl">Correct</div></div>
+        <div class="rs"><div class="rs-val" style="color:var(--red)">${total-correct}</div><div class="rs-lbl">Wrong</div></div>
+        <div class="rs"><div class="rs-val" style="color:var(--blue)">${fmtTime(timeSec)}</div><div class="rs-lbl">Time Taken</div></div>
+      </div>
+    </div>
+    <div class="chart-wrap">
+      <div class="chart-title">📊 Score Breakdown</div>
+      <div class="bar-chart">
+        <div class="bar-row">
+          <div class="bar-label">Correct</div>
+          <div class="bar-track"><div class="bar-fill correct-bar" style="width:${(correct/total)*100}%">${correct > 0 ? correct : ''}</div></div>
+          <div class="bar-count">${correct}</div>
+        </div>
+        <div class="bar-row">
+          <div class="bar-label">Wrong</div>
+          <div class="bar-track"><div class="bar-fill wrong-bar" style="width:${((total-correct)/total)*100}%">${(total-correct) > 0 ? (total-correct) : ''}</div></div>
+          <div class="bar-count">${total-correct}</div>
+        </div>
+      </div>
+    </div>
+    <div class="ai-rec">
+      <div class="ai-rec-title">🤖 AI Recommendation</div>
+      <div class="ai-rec-content" id="aiRecContent">
+        <div class="ai-ld"><div class="dots"><span></span><span></span><span></span></div>Generating personalized recommendations…</div>
+      </div>
+    </div>
+    <div style="text-align:center;margin-top:0.5rem;">
+      <button class="btn-try-again" onclick="genQ()">🔄 Try Again</button>
+    </div>`;
+
+  rp.scrollIntoView({behavior:'smooth', block:'start'});
+
+  // Get AI recommendation
+  try {
+    const wrongSummary = wrongQs.length > 0
+      ? wrongQs.map((w,i)=>`${i+1}. Q: "${w.q}" | You chose: "${w.chosen}" | Correct: "${w.right}"`).join('\n')
+      : 'All answers were correct!';
+
+    const rec = await groq(
+      `A student just completed a ${diff} difficulty quiz on "${topic}" for the ${S.exam} exam.
+Score: ${correct}/${total} (${acc}%)
+Time taken: ${fmtTime(timeSec)}
+
+Wrong answers:
+${wrongSummary}
+
+Give a personalized analysis with these ### sections:
+### Performance Summary
+1-2 sentences on overall performance.
+### Mistakes Analysis
+What specific mistakes were made and why.
+### How to Improve
+3-4 specific actionable tips to improve on this topic.
+### What to Study Next
+Recommend what to focus on next for the ${S.exam} exam.
+
+Be encouraging, specific, and exam-focused. Keep it concise.`,
+      'You are an expert exam coach. Give specific, actionable, encouraging feedback.'
+    );
+    document.getElementById('aiRecContent').innerHTML = `<div class="mdc">${mdr(rec)}</div>`;
+  } catch(e) {
+    document.getElementById('aiRecContent').innerHTML = `<p style="color:var(--text2)">Could not load AI recommendation. Try again later.</p>`;
+  }
+}
+
+function fmtTime(sec) {
+  if (sec < 60) return `${sec}s`;
+  const m = Math.floor(sec/60), s = sec%60;
+  return `${m}m ${s}s`;
 }
 
 // ──────────────────────────────────────
@@ -792,13 +933,13 @@ function ans(qi, chosen, correct, explanation, trick, topic) {
 // ──────────────────────────────────────
 function renderTeach(topics) {
   const c = document.getElementById('teContent');
-  if (!topics || !topics.length) return;
-  const ic = ['📐','🔢','📝','🧮','💡','📊','🔬','🌐','⚡','🎯','🧩','📈'];
-  c.innerHTML = `<p style="font-size:0.84rem;color:var(--text2);margin-bottom:1.25rem">Click any topic to get a Gemini AI-powered lesson with formulas, examples & shortcuts.</p>
-  ${topics.map((t, i) => `
+  if(!topics||!topics.length) return;
+  const ic=['📐','🔢','📝','🧮','💡','📊','🔬','🌐','⚡','🎯','🧩','📈'];
+  c.innerHTML=`<p style="font-size:0.84rem;color:var(--text2);margin-bottom:1.25rem">Click any topic to get a Groq AI lesson with formulas, examples & shortcuts. Time spent on each topic is tracked.</p>
+  ${topics.map((t,i)=>`
     <div class="t-card" data-topic="${ea(t)}" id="tc${i}">
       <div class="t-head" onclick="togTeach(${i},'${ea(t)}')">
-        <div class="t-ico">${ic[i % ic.length]}</div>
+        <div class="t-ico">${ic[i%ic.length]}</div>
         <div class="t-name">${eh(t)}</div>
         <div class="t-arr">▼</div>
       </div>
@@ -809,30 +950,43 @@ function renderTeach(topics) {
 }
 
 async function togTeach(i, topic) {
-  const card = document.getElementById('tc' + i), body = document.getElementById('tb' + i);
-  if (card.classList.contains('open')) { card.classList.remove('open'); return; }
+  const card=document.getElementById('tc'+i), body=document.getElementById('tb'+i);
+  if(card.classList.contains('open')){
+    card.classList.remove('open');
+    // Stop time tracking
+    if(S.prog.topicTimers[topic]){
+      if(!S.prog.topics[topic]) S.prog.topics[topic]={total:0,correct:0,timeMs:0};
+      S.prog.topics[topic].timeMs += Date.now() - S.prog.topicTimers[topic];
+      delete S.prog.topicTimers[topic];
+    }
+    return;
+  }
   card.classList.add('open');
-  if (body.dataset.loaded) return;
-  body.dataset.loaded = '1';
+  // Start time tracking for Teach Me
+  if(!S.prog.topics[topic]) S.prog.topics[topic]={total:0,correct:0,timeMs:0};
+  S.prog.topicTimers[topic] = Date.now();
+
+  if(body.dataset.loaded) return;
+  body.dataset.loaded='1';
   try {
-    const r = await gemini(
-      `Teach me the topic "${topic}" specifically for the ${S.exam} exam.
-Structure your response with these ### sections:
+    const r = await groq(
+      `Teach me "${topic}" specifically for the ${S.exam} exam. Use these ### sections:
 ### Concept
-Brief 2-3 sentence explanation of the core concept.
+2-3 sentence explanation of the core concept.
 ### Key Formulas / Rules
-List the important formulas, rules, or points to remember.
+Important formulas, rules, or points.
 ### Solved Example
-Show 1-2 worked examples with step-by-step solution.
+1-2 worked examples with step-by-step solutions.
 ### Memory Trick
-A shortcut or mnemonic to remember this topic.
+A shortcut or mnemonic to remember this fast.
 ### Exam Tip
-What type of questions appear in ${S.exam} on this topic.
-Be concise, clear, and exam-focused.`
+What type of questions appear in ${S.exam} on this topic.`,
+      `You are an expert tutor for the ${S.exam} exam. Be concise, clear, and exam-focused.`
     );
-    body.innerHTML = `<div class="mdc" style="padding-top:0.75rem">${mdr(r)}</div>`;
-  } catch (e) {
-    body.innerHTML = `<p style="color:var(--red);font-size:0.84rem">Error loading lesson. Try again.</p>`;
+    body.innerHTML=`<div class="mdc" style="padding-top:0.75rem">${mdr(r)}</div>`;
+  } catch(e) {
+    body.innerHTML=`<p style="color:var(--red);font-size:0.84rem">Error loading lesson. Try again.</p>`;
+    body.dataset.loaded='';
   }
 }
 
@@ -840,78 +994,112 @@ Be concise, clear, and exam-focused.`
 //  TAB 4 — CHAT
 // ──────────────────────────────────────
 function initChat() {
-  S.chatHist = [];
-  document.getElementById('chatMsgs').innerHTML = '';
-  addMsg('ai', `Hi! I'm your AI tutor for **${eh(S.exam)}**, powered by Google Gemini. Ask me anything — concepts, strategies, doubts, shortcuts, or question patterns. Let's crack it! 🎓`);
+  S.chatHist=[];
+  document.getElementById('chatMsgs').innerHTML='';
+  addMsg('ai',`Hi! I'm your AI tutor for **${eh(S.exam)}**, powered by Groq AI. Ask me anything — concepts, strategies, doubts, shortcuts, or question patterns. Let's crack it! 🎓`);
 }
-
-function addMsg(role, text) {
-  const c = document.getElementById('chatMsgs');
-  const d = document.createElement('div'); d.className = `msg ${role}`;
-  d.innerHTML = role === 'ai' ? mdr(text) : eh(text);
-  c.appendChild(d); c.scrollTop = c.scrollHeight;
+function addMsg(role,text) {
+  const c=document.getElementById('chatMsgs');
+  const d=document.createElement('div'); d.className=`msg ${role}`;
+  d.innerHTML=role==='ai'?mdr(text):eh(text);
+  c.appendChild(d); c.scrollTop=c.scrollHeight;
   return d;
 }
-
-function chatKey(e) { if (e.key === 'Enter' && !e.shiftKey) { e.preventDefault(); sendMsg(); } }
-
+function chatKey(e){if(e.key==='Enter'&&!e.shiftKey){e.preventDefault();sendMsg();}}
 async function sendMsg() {
-  const inp = document.getElementById('chatInp');
-  const txt = inp.value.trim();
-  if (!txt) return;
-  inp.value = ''; inp.style.height = '';
-  document.getElementById('chatSend').disabled = true;
-  addMsg('user', txt);
-  S.chatHist.push({ role:'user', content:txt });
-  const ld = addMsg('ai', '…');
-  ld.innerHTML = `<div class="dots"><span></span><span></span><span></span></div>`;
-  const sys = `You are an expert tutor specializing in the ${S.exam} exam. Syllabus topics include: ${S.topics.join(', ') || 'all relevant topics'}. Give clear, concise, exam-focused answers. Be encouraging and helpful.`;
+  const inp=document.getElementById('chatInp');
+  const txt=inp.value.trim(); if(!txt) return;
+  inp.value=''; inp.style.height='';
+  document.getElementById('chatSend').disabled=true;
+  addMsg('user',txt);
+  S.chatHist.push({role:'user',content:txt});
+  const ld=addMsg('ai','…');
+  ld.innerHTML=`<div class="dots"><span></span><span></span><span></span></div>`;
+  const sys=`You are an expert tutor for the ${S.exam} exam. Syllabus: ${S.topics.join(', ')||'all relevant topics'}. Give clear, concise, exam-focused answers.`;
   try {
-    const rep = await geminiChat(S.chatHist, sys);
-    ld.innerHTML = mdr(rep); ld.className = 'msg ai';
-    S.chatHist.push({ role:'assistant', content:rep });
-    if (S.chatHist.length > 20) S.chatHist = S.chatHist.slice(-20);
-  } catch (e) {
-    ld.innerHTML = `<span style="color:var(--red)">Error: ${eh(e.message)}</span>`;
-  } finally {
-    document.getElementById('chatSend').disabled = false;
-    document.getElementById('chatMsgs').scrollTop = 99999;
-  }
+    const rep=await groqChat(S.chatHist,sys);
+    ld.innerHTML=mdr(rep); ld.className='msg ai';
+    S.chatHist.push({role:'assistant',content:rep});
+    if(S.chatHist.length>20) S.chatHist=S.chatHist.slice(-20);
+  } catch(e) { ld.innerHTML=`<span style="color:var(--red)">Error: ${eh(e.message)}</span>`; }
+  finally { document.getElementById('chatSend').disabled=false; document.getElementById('chatMsgs').scrollTop=99999; }
 }
-
-document.getElementById('chatInp').addEventListener('input', function () {
-  this.style.height = 'auto';
-  this.style.height = Math.min(this.scrollHeight, 120) + 'px';
-});
+document.getElementById('chatInp').addEventListener('input',function(){this.style.height='auto';this.style.height=Math.min(this.scrollHeight,120)+'px';});
 
 // ──────────────────────────────────────
-//  TAB 5 — PROGRESS
+//  TAB 5 — SELF ANALYSIS
 // ──────────────────────────────────────
 function renderProg() {
   const p = S.prog;
-  const acc = p.total > 0 ? Math.round((p.correct / p.total) * 100) : 0;
-  const ac = acc >= 70 ? 'var(--green)' : acc >= 40 ? '#ffc846' : 'var(--red)';
-  const rows = Object.entries(p.topics).map(([t, s]) => {
-    const pct = s.total > 0 ? Math.round((s.correct / s.total) * 100) : 0;
-    return `<div class="t-row"><div class="t-row-name">${eh(t)}</div><div style="font-size:0.73rem;color:var(--text3)">${s.correct}/${s.total}</div><div class="bar-wrap"><div class="bar" style="width:${pct}%"></div></div><div class="bar-pct">${pct}%</div></div>`;
+  const acc = p.total>0?Math.round((p.correct/p.total)*100):0;
+  const ac = acc>=70?'var(--green)':acc>=40?'#ffc846':'var(--red)';
+  const totalTimeMs = Object.values(p.topics).reduce((s,t)=>s+t.timeMs,0);
+
+  // Topic rows
+  const topicEntries = Object.entries(p.topics);
+  const topicRows = topicEntries.map(([t,s])=>{
+    const pct = s.total>0?Math.round((s.correct/s.total)*100):0;
+    const timeSec = Math.round(s.timeMs/1000);
+    return `<div class="t-row">
+      <div class="t-row-name">${eh(t)}</div>
+      <div style="font-size:0.73rem;color:var(--text3)">${s.correct}/${s.total}</div>
+      <div class="bar-wrap"><div class="bar-inner" style="width:${pct}%"></div></div>
+      <div class="bar-pct">${pct}%</div>
+      <div class="time-badge">⏱ ${fmtTime(timeSec)}</div>
+    </div>`;
   }).join('');
+
+  // Chart for topic performance
+  const chartBars = topicEntries.map(([t,s])=>{
+    const pct = s.total>0?Math.round((s.correct/s.total)*100):0;
+    const barColor = pct>=70?'var(--green)':pct>=40?'#ffc846':'var(--red)';
+    return `<div class="bar-row">
+      <div class="bar-label" title="${eh(t)}">${eh(t.length>12?t.substring(0,12)+'…':t)}</div>
+      <div class="bar-track">
+        <div class="bar-fill" style="background:${barColor};width:${pct}%;color:#06060a;">${pct>15?pct+'%':''}</div>
+      </div>
+      <div class="bar-count">${pct}%</div>
+    </div>`;
+  }).join('');
+
   document.getElementById('pgContent').innerHTML = `
     <div class="prog-grid">
-      <div class="prog-stat"><div class="prog-val" style="color:var(--accent)">${p.total}</div><div class="prog-lbl">Answered</div></div>
+      <div class="prog-stat"><div class="prog-val" style="color:var(--accent)">${p.total}</div><div class="prog-lbl">Total Answered</div></div>
       <div class="prog-stat"><div class="prog-val" style="color:var(--green)">${p.correct}</div><div class="prog-lbl">Correct</div></div>
-      <div class="prog-stat"><div class="prog-val" style="color:${ac}">${acc}%</div><div class="prog-lbl">Accuracy</div></div>
-      <div class="prog-stat"><div class="prog-val" style="color:var(--blue)">${Object.keys(p.topics).length}</div><div class="prog-lbl">Topics Done</div></div>
+      <div class="prog-stat"><div class="prog-val" style="color:${ac}">${acc}%</div><div class="prog-lbl">Overall Accuracy</div></div>
+      <div class="prog-stat"><div class="prog-val" style="color:var(--blue)">${p.sessions}</div><div class="prog-lbl">Sessions Done</div></div>
+      <div class="prog-stat"><div class="prog-val" style="color:var(--purple);font-size:1.3rem">${fmtTime(Math.round(totalTimeMs/1000))}</div><div class="prog-lbl">Total Study Time</div></div>
     </div>
-    ${rows ? `<div class="card"><div class="card-title">📊 Topic-wise Performance</div>${rows}</div>` : `<div class="empty"><div class="ei">📊</div><p>No data yet. Head to Practice and answer some questions!</p></div>`}
-    ${p.total > 0 ? `<div class="card"><div class="card-title">💡 AI Insight</div><div class="mdc">${acc >= 70 ? `Excellent! ${acc}% accuracy is great — try Hard difficulty to push further.` : acc >= 40 ? `You're at ${acc}% — review explanations for wrong answers and use Teach Me for weak topics.` : `Keep going! Start with Teach Me to build your fundamentals, then come back to practice.`}</div></div>` : ''}`;
+
+    ${topicEntries.length>0?`
+    <div class="card">
+      <div class="card-title">📊 Topic-wise Performance & Time Spent</div>
+      ${topicRows}
+    </div>
+
+    <div class="chart-wrap">
+      <div class="chart-title">📈 Accuracy by Topic</div>
+      ${chartBars.length>0?`<div class="bar-chart">${chartBars}</div>`:'<p style="color:var(--text3);font-size:0.84rem">No data yet.</p>'}
+    </div>`:`
+    <div class="empty"><div class="ei">📊</div><p>No data yet. Head to Practice and answer some questions!<br>Your scores, accuracy, and time spent per topic will appear here.</p></div>`}
+
+    ${p.total>0?`
+    <div class="card">
+      <div class="card-title">💡 Overall Insight</div>
+      <div class="mdc">${
+        acc>=70?`Excellent performance! ${acc}% accuracy overall. Focus on Hard questions and weak topics to perfect your preparation.`:
+        acc>=40?`Good progress at ${acc}%. Review explanations for wrong answers and spend more time on weak topics using Teach Me.`:
+        `Keep going! ${acc}% — start with the Teach Me tab to build your fundamentals, then practice more questions.`
+      }</div>
+    </div>`:''}`;
 }
 
 // ──────────────────────────────────────
 //  UTILS
 // ──────────────────────────────────────
-function eh(s) { return String(s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;').replace(/'/g,'&#39;'); }
-function ea(s) { return String(s||'').replace(/'/g,"\\'").replace(/"/g,'&quot;'); }
-function mdr(t) {
+function eh(s){return String(s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;').replace(/'/g,'&#39;');}
+function ea(s){return String(s||'').replace(/'/g,"\\'").replace(/"/g,'&quot;');}
+function mdr(t){
   return String(t||'')
     .replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;')
     .replace(/\*\*(.+?)\*\*/g,'<strong>$1</strong>')
